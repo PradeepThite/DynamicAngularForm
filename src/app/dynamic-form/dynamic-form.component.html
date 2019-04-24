@@ -1,0 +1,10 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <!-- Loop of schems -->
+  <label *ngFor="let schema of profileForm.value.data">
+    {{schema.description}} :
+    <input *ngIf="schema.type == 'text'" type="text" formControlName="{{schema.controlName}}">
+    <input *ngIf="schema.type == 'number'" type="number" formControlName="{{schema.controlName}}">
+    <br>
+  </label>
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>
